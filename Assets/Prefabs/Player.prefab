@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8032946597301365957}
   - component: {fileID: 7496913124923525427}
+  - component: {fileID: 1304570100919813069}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -56,11 +57,25 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1304570100919813069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524680597741598846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95009c76d64e94344924e86e71c78a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 8
+  rb: {fileID: 7496913124923525427}
 --- !u!1 &8222293860585547345
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +169,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8222293860585547345}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 46d2db8a2984d7b499b0a59bbbff1ca8, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -186,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4884703204726727860
 Transform:
   m_ObjectHideFlags: 0
