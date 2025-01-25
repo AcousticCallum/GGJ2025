@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 346107798}
   - component: {fileID: 346107797}
   - component: {fileID: 346107796}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 848893510}
   - component: {fileID: 848893509}
   - component: {fileID: 848893508}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bubble Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 1189062074}
   - component: {fileID: 1189062070}
   - component: {fileID: 1189062069}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1210,7 +1210,7 @@ GameObject:
   - component: {fileID: 1639885149}
   - component: {fileID: 1639885148}
   - component: {fileID: 1639885147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Marble Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
