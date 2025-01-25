@@ -9,6 +9,8 @@ public class CameraTarget : MonoBehaviour
 
     public float lerp;
 
+    private Vector3 followVelocity;
+
     private void Awake()
     {
         instance = this;
@@ -21,11 +23,11 @@ public class CameraTarget : MonoBehaviour
         Vector3 playerVelocity = Player.instance.rb.velocity;
         playerVelocity.y = 0.0f;
 
-        if(playerVelocity.sqrMagnitude == 0.0f)
+        if(playerVelocity.sqrMagnitude != 0.0f)
         {
-            return;
+            followVelocity = playerVelocity;
         }
 
-        transform.rotation = Quaternion.LookRotation(Vector3.Lerp(transform.forward, playerVelocity.normalized, lerp * Time.deltaTime), Vector3.up);
+        transform.rotation = Quaternion.LookRotation(Vector3.Lerp(transform.forward, followVelocity.normalized, lerp * Time.deltaTime), Vector3.up);
     }
 }

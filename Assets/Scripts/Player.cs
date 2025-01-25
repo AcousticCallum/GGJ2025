@@ -45,18 +45,18 @@ public class Player : MonoBehaviour
             // Rotate around axis that moves in target direction
             rb.AddTorque(torque * moveInput.magnitude * Vector3.Cross(Vector3.up, targetDirection));
 
-            // Moving in target direction
-            if (Vector3.Dot(rb.velocity.normalized, targetDirection.normalized) >= 0.0f)
+            /*// Moving in target direction
+            if (Vector3.Dot(rb.velocity.normalized, targetDirection.normalized) >= -Mathf.Cos(Mathf.PI * 0.5f))
             {
                 // Default drag
                 rb.angularDrag = angularDrag;
 
                 return;
-            }
+            }*/
         }
 
-        // Brake with high drag
-        rb.angularDrag = stoppingAngularDrag;
+        /*// Brake with high drag
+        rb.angularDrag = stoppingAngularDrag;*/
     }
 
     public void SetMoveInput(InputAction.CallbackContext ctx)

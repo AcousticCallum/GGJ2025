@@ -877,7 +877,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   torque: 10
   angularDrag: 0.05
-  stoppingAngularDrag: 0.05
+  stoppingAngularDrag: 10
 --- !u!1652712579 &1189062070
 MultiplayerRolesData:
   m_ObjectHideFlags: 2
@@ -897,7 +897,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
