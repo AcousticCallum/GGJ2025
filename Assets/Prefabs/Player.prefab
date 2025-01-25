@@ -28,10 +28,9 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 9039394376398600635}
+  m_Children: []
   m_Father: {fileID: 8432055920363389436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8581951386820212832
@@ -64,91 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 75f3a16d407778e42b2dc49735ae4d56, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &1426411830420082145
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9039394376398600635}
-  - component: {fileID: 3131018402341452207}
-  - component: {fileID: 491927877410535308}
-  m_Layer: 3
-  m_Name: Bubble Art Backface
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9039394376398600635
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426411830420082145}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 6562594248362293741}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3131018402341452207
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426411830420082145}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &491927877410535308
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1426411830420082145}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
+  - {fileID: 2100000, guid: 41586748c822b21479d9c2eaf0298ec4, type: 2}
   - {fileID: 2100000, guid: 7b4de51150ca5b14aa46f890fe19973f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -325,13 +240,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3f1ace9c9b824da1332dbc72c1a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubbleDrag: {x: 5, y: 0, z: 0}
+  bubbleDrag: {x: 1, y: 1, z: 1}
   rb: {fileID: 0}
   state: 0
   torque: 10
+  force: 10
   angularDrag: 0.05
   stoppingAngularDrag: 10
   bubbleArt: {fileID: 1054811057947232856}
+  marbleArt: {fileID: 8019493430713984790}
 --- !u!1001 &7173001759701604935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -415,6 +332,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: marble
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 135e4e5fcc5d3e1418e72105a355c237,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -423,6 +345,12 @@ PrefabInstance:
 --- !u!4 &7206083097676840364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 135e4e5fcc5d3e1418e72105a355c237,
+    type: 3}
+  m_PrefabInstance: {fileID: 7173001759701604935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8019493430713984790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 135e4e5fcc5d3e1418e72105a355c237,
     type: 3}
   m_PrefabInstance: {fileID: 7173001759701604935}
   m_PrefabAsset: {fileID: 0}

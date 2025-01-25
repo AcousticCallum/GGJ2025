@@ -21,10 +21,11 @@ public class Player : MonoBehaviour
     [SerializeField] private State state;
     
     [SerializeField] private float torque;
+    [SerializeField] private float force;
 
     [SerializeField] private float angularDrag, stoppingAngularDrag;
 
-    [SerializeField] private GameObject bubbleArt;
+    [SerializeField] private GameObject bubbleArt, marbleArt;
 
     // Private
     private Vector2 moveInput;
@@ -56,8 +57,16 @@ public class Player : MonoBehaviour
             targetDirection.y = 0.0f;
             targetDirection.Normalize();
 
-            // Rotate around axis that moves in target direction
-            rb.AddTorque(torque * moveInput.magnitude * Vector3.Cross(Vector3.up, targetDirection));
+            if (state == State.MARBLE)
+            {
+                // Rotate around axis that moves in target direction
+                rb.AddTorque(torque * moveInput.magnitude * Vector3.Cross(Vector3.up, targetDirection));
+            }
+            else
+            {
+                // Rotate around axis that moves in target direction
+                rb.AddForce(force * moveInput.magnitude * targetDirection);
+            }
         }
 
         if (state == State.BUBBLE)
@@ -80,6 +89,7 @@ public class Player : MonoBehaviour
                 rb.useGravity = false;
 
                 bubbleArt.SetActive(true);
+                marbleArt.SetActive(false);
 
                 state = State.BUBBLE;
                 break;
@@ -89,6 +99,7 @@ public class Player : MonoBehaviour
                 rb.useGravity = true;
 
                 bubbleArt.SetActive(false);
+                marbleArt.SetActive(true);
 
                 state = State.MARBLE;
                 break;
