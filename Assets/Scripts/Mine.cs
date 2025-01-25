@@ -6,9 +6,9 @@ public class Mine : MonoBehaviour
 {
     public float explosionForce;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == Player.instance.gameObject)
+        if (other.gameObject == Player.instance.gameObject)
         {
             Player.instance.rb.AddExplosionForce(explosionForce, transform.position, 1);
 
