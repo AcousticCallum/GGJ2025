@@ -85,4 +85,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colour: {r: 0.19607843, g: 0.5882353, b: 0.88235295, a: 1}
-  fogEndDistance: 100
+  fogEndDistance: 50
