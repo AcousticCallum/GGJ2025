@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Underwater : MonoBehaviour
 {
+    [SerializeField] float fogEndDistance;
+
+    private void Awake()
+    {
+        RenderSettings.fogMode = FogMode.Linear;
+        RenderSettings.fogEndDistance = fogEndDistance;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         RenderSettings.fog = true;
