@@ -11,7 +11,7 @@ public class Button : MonoBehaviour
     {
         if (collision.transform == Player.instance.transform)
         {
-            if (Player.instance.state == Player.State.MARBLE)
+            if (Player.instance.ReadState() == Player.State.MARBLE)
             {
                 pressEvent.Invoke();
             }

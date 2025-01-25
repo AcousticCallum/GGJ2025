@@ -8,10 +8,9 @@ public class Mine : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject == Player.instance.gameObject)
         {
-            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
-            playerRb.AddExplosionForce(explosionForce, transform.position, 1);
+            Player.instance.rb.AddExplosionForce(explosionForce, transform.position, 1);
 
             Destroy(gameObject);
         }

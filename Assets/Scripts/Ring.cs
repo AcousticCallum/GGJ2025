@@ -8,12 +8,7 @@ public class Ring : MonoBehaviour
     public bool timed;
     public float timerTime;
 
-    private WaitForSeconds wait;
-
-    private void Start()
-    {
-        wait = new WaitForSeconds(timerTime);
-    }
+    static Coroutine currentTimer;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,21 +16,27 @@ public class Ring : MonoBehaviour
         {
             Player.instance.ChangeState(state);
 
-            if (timed) StartCoroutine(Timer());
+            if(currentTimer != null)
+            {
+                StopCoroutine(currentTimer);
+            }
+
+            if (timed)
+            {
+                currentTimer = StartCoroutine(Timer());
+            }
         }
     }
 
     private IEnumerator Timer()
     {
-        Player.State otherState = Player.State.BUBBLE;
-        if (state == otherState)
-            otherState = Player.State.MARBLE;
+        yield return new WaitForSeconds(timerTime);
 
-        Player.instance.ChangeState(state);
+        if (Player.instance.ReadState() == state)
+        {
+            Player.instance.ChangeState(state == Player.State.MARBLE ? Player.State.BUBBLE : Player.State.MARBLE);
+        }
 
-        yield return wait;
-
-        Player.instance.ChangeState(otherState);
         yield return null;
     }
 }

@@ -12,13 +12,14 @@ public class Player : MonoBehaviour
     public static Player instance;
 
     // Public
-    public State state;
     public Vector3 bubbleDrag;
 
     // Hidden Public
     [HideInInspector] public Rigidbody rb;
 
     // Serialized Private
+    [SerializeField] private State state;
+    
     [SerializeField] private float torque;
 
     [SerializeField] private float angularDrag, stoppingAngularDrag;
@@ -27,7 +28,6 @@ public class Player : MonoBehaviour
 
     // Private
     private Vector2 moveInput;
-    private State previousState;
     private Vector3 respawnPoint;
 
     private void Awake()
@@ -45,16 +45,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();   
-    }
-
-    private void Update()
-    {
-        // FOR SWTICHING STATE IN THE INSPECTOR
-        if (previousState != state)
-        {
-            ChangeState(state, true);
-            previousState = state;
-        }
     }
 
     private void FixedUpdate()
@@ -76,10 +66,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ChangeState(State newState, bool debug = false)
+    public void ChangeState(State newState)
     {
-        if (!debug) state = newState;
-
         switch (newState)
         {
             case State.BUBBLE:
@@ -98,6 +86,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public State ReadState()
+    {
+        return state;
+    }
+
     public void SetMoveInput(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
@@ -110,8 +103,9 @@ public class Player : MonoBehaviour
 
     public void SetCheckpoint(Vector3 position)
     {
-        instance.respawnPoint = position;
+        respawnPoint = position;
     }
+
     public void Die()
     {
         if (respawnPoint != null)
