@@ -903,6 +903,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1932538641698798955, guid: 6ff9580b24d06374d9328ee534bfd1e3,
+        type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932538641698798955, guid: 6ff9580b24d06374d9328ee534bfd1e3,
+        type: 3}
+      propertyPath: timed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932538641698798955, guid: 6ff9580b24d06374d9328ee534bfd1e3,
+        type: 3}
+      propertyPath: timerTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4930845766112161308, guid: 6ff9580b24d06374d9328ee534bfd1e3,
         type: 3}
       propertyPath: m_LocalScale.x
