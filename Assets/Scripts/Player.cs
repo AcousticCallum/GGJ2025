@@ -66,6 +66,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        bubbleArt.transform.rotation = Quaternion.identity;
+    }
+
     public void ChangeState(State newState)
     {
         switch (newState)
@@ -75,6 +80,8 @@ public class Player : MonoBehaviour
                 rb.useGravity = false;
 
                 bubbleArt.SetActive(true);
+
+                state = State.BUBBLE;
                 break;
 
             case State.MARBLE:
@@ -82,6 +89,8 @@ public class Player : MonoBehaviour
                 rb.useGravity = true;
 
                 bubbleArt.SetActive(false);
+
+                state = State.MARBLE;
                 break;
         }
     }

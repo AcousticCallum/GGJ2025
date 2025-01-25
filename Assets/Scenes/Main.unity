@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1475671841}
-  m_Follow: {fileID: 1109328772}
+  m_Follow: {fileID: 1475671841}
   m_Lens:
     FieldOfView: 75
     OrthographicSize: 5
@@ -1190,7 +1190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerp: 1
-  cameraHeight: 2
 --- !u!4 &1475671841
 Transform:
   m_ObjectHideFlags: 0

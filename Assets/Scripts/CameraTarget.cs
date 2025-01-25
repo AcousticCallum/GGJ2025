@@ -8,7 +8,6 @@ public class CameraTarget : MonoBehaviour
     public static CameraTarget instance;
 
     public float lerp;
-    public float cameraHeight;
 
     private Vector3 followVelocity;
 
@@ -26,7 +25,7 @@ public class CameraTarget : MonoBehaviour
 
     void Update()
     {
-        transform.position = Player.instance.transform.position + (Vector3.up * cameraHeight);
+        transform.position = Player.instance.transform.position;
         
         Vector3 playerVelocity = Player.instance.rb.velocity;
         playerVelocity.y = 0.0f;
@@ -37,5 +36,14 @@ public class CameraTarget : MonoBehaviour
         }
 
         transform.rotation = Quaternion.LookRotation(Vector3.Lerp(transform.forward, followVelocity.normalized, lerp * Time.deltaTime), Vector3.up);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + followVelocity.normalized);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward);
     }
 }

@@ -52,7 +52,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fresnel: 1
+    - _Fresnel: 2
     - _Gradient_Intensity: 0.75
     - _Noise_Intensity_A: 0.2
     - _Noise_Intensity_B: 0.2

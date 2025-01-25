@@ -19,6 +19,8 @@ public class Ring : MonoBehaviour
             if(currentTimer != null)
             {
                 StopCoroutine(currentTimer);
+
+                currentTimer = null;
             }
 
             if (timed)
@@ -35,8 +37,10 @@ public class Ring : MonoBehaviour
         if (Player.instance.ReadState() == state)
         {
             Player.instance.ChangeState(state == Player.State.MARBLE ? Player.State.BUBBLE : Player.State.MARBLE);
+
+            Debug.Log("Changed state");
         }
 
-        yield return null;
+        currentTimer = null;
     }
 }
