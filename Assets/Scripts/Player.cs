@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float torque;
 
     [SerializeField] private float angularDrag, stoppingAngularDrag;
+
+    [SerializeField] private GameObject bubbleArt;
 
     // Private
     private Vector2 moveInput;
@@ -73,11 +76,15 @@ public class Player : MonoBehaviour
             case State.BUBBLE:
                 rb.excludeLayers = 1 << LayerMask.NameToLayer("Mesh");
                 rb.useGravity = false;
+
+                bubbleArt.SetActive(true);
                 break;
 
             case State.MARBLE:
                 rb.excludeLayers = 0;
                 rb.useGravity = true;
+
+                bubbleArt.SetActive(false);
                 break;
         }
     }
