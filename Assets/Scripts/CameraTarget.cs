@@ -8,6 +8,7 @@ public class CameraTarget : MonoBehaviour
     public static CameraTarget instance;
 
     public float lerp;
+    public float cameraHeight;
 
     private Vector3 followVelocity;
 
@@ -18,7 +19,7 @@ public class CameraTarget : MonoBehaviour
 
     void Update()
     {
-        transform.position = Player.instance.transform.position;
+        transform.position = Player.instance.transform.position + (Vector3.up * cameraHeight);
         
         Vector3 playerVelocity = Player.instance.rb.velocity;
         playerVelocity.y = 0.0f;
