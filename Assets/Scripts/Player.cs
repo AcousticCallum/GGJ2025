@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     // Public
     public State state;
+    public Vector3 bubbleDrag;
 
     // Hidden Public
     [HideInInspector] public Rigidbody rb;
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
 
     // Private
     private Vector2 moveInput;
+    private State previousState;
 
     private void Awake()
     {
@@ -33,9 +35,19 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        // FOR SWTICHING STATE IN THE INSPECTOR
+        if (previousState != state)
+        {
+            ChangeState(state, true);
+            previousState = state;
+        }
+    }
+
     private void FixedUpdate()
     {
-        if(moveInput.sqrMagnitude > 0.0f)
+        if (moveInput.sqrMagnitude > 0.0f)
         {
             // Convert input direction to world space relative to camera and flatten to Y plane
             Vector3 targetDirection = Camera.main.transform.TransformDirection(moveInput);
@@ -44,32 +56,30 @@ public class Player : MonoBehaviour
 
             // Rotate around axis that moves in target direction
             rb.AddTorque(torque * moveInput.magnitude * Vector3.Cross(Vector3.up, targetDirection));
-
-            /*// Moving in target direction
-            if (Vector3.Dot(rb.velocity.normalized, targetDirection.normalized) >= -Mathf.Cos(Mathf.PI * 0.5f))
-            {
-                // Default drag
-                rb.angularDrag = angularDrag;
-
-                return;
-            }*/
         }
 
-        /*// Brake with high drag
-        rb.angularDrag = stoppingAngularDrag;*/
-
-        switch (state)
+        if (state == State.BUBBLE)
         {
+            rb.AddForce(Vector3.Scale(bubbleDrag, -rb.velocity));
+        }
+    }
+
+    public void ChangeState(State newState, bool debug = false)
+    {
+        if (!debug) state = newState;
+
+        switch (newState)
+        {
+            case State.BUBBLE:
+                rb.excludeLayers = 1 << LayerMask.NameToLayer("Mesh");
+                rb.useGravity = false;
+                break;
+
             case State.MARBLE:
+                rb.excludeLayers = 0;
                 rb.useGravity = true;
                 break;
-
-            case State.BUBBLE:
-                rb.useGravity = false;
-                rb.AddForce(-Physics.gravity);
-                break;
         }
-            
     }
 
     public void SetMoveInput(InputAction.CallbackContext ctx)
