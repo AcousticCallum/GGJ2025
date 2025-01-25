@@ -76,11 +76,13 @@ public class Player : MonoBehaviour
         switch (newState)
         {
             case State.BUBBLE:
-                rb.includeLayers = 1 << LayerMask.NameToLayer("Mesh");
+                rb.excludeLayers = 1 << LayerMask.NameToLayer("Mesh");
+                rb.useGravity = false;
                 break;
 
             case State.MARBLE:
-                rb.includeLayers = 0;
+                rb.excludeLayers = 0;
+                rb.useGravity = true;
                 break;
         }
     }
