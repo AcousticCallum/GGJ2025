@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -24,15 +25,23 @@ public class Player : MonoBehaviour
     // Private
     private Vector2 moveInput;
     private State previousState;
+    private Vector3 respawnPoint;
 
     private void Awake()
     {
+        if (instance && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();   
     }
 
     private void Update()
@@ -90,6 +99,20 @@ public class Player : MonoBehaviour
         {
             moveInput.Normalize();
         }
+    }
+
+    public void SetCheckpoint(Vector3 position)
+    {
+        instance.respawnPoint = position;
+    }
+    public void Die()
+    {
+        if (respawnPoint != null)
+        {
+            transform.position = respawnPoint;
+        }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public enum State

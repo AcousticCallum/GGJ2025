@@ -12,9 +12,16 @@ public class CameraTarget : MonoBehaviour
 
     private Vector3 followVelocity;
 
-    private void Awake()
+    void Awake()
     {
+        if (instance && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
