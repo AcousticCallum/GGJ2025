@@ -1169,6 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  bubbleDrag: {x: 5, y: 0, z: 0}
   rb: {fileID: 0}
   torque: 10
   angularDrag: 0.05

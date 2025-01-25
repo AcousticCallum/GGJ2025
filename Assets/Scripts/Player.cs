@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     // Public
     public State state;
+    public Vector3 bubbleDrag;
 
     // Hidden Public
     [HideInInspector] public Rigidbody rb;
@@ -34,6 +35,16 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        // FOR SWTICHING STATE IN THE INSPECTOR
+        if (previousState != state)
+        {
+            ChangeState(state, true);
+            previousState = state;
+        }
+    }
+
     private void FixedUpdate()
     {
         if (moveInput.sqrMagnitude > 0.0f)
@@ -45,28 +56,12 @@ public class Player : MonoBehaviour
 
             // Rotate around axis that moves in target direction
             rb.AddTorque(torque * moveInput.magnitude * Vector3.Cross(Vector3.up, targetDirection));
-
-            /*// Moving in target direction
-            if (Vector3.Dot(rb.velocity.normalized, targetDirection.normalized) >= -Mathf.Cos(Mathf.PI * 0.5f))
-            {
-                // Default drag
-                rb.angularDrag = angularDrag;
-
-                return;
-            }*/
         }
 
-        /*// Brake with high drag
-        rb.angularDrag = stoppingAngularDrag;*/
-
-
-        // FOR SWTICHING STATE IN THE INSPECTOR
-        if (previousState != state)
+        if (state == State.BUBBLE)
         {
-            ChangeState(state, true);
-            previousState = state;
+            rb.AddForce(Vector3.Scale(bubbleDrag, -rb.velocity));
         }
-
     }
 
     public void ChangeState(State newState, bool debug = false)
