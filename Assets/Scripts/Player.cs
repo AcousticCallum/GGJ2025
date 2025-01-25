@@ -57,6 +57,19 @@ public class Player : MonoBehaviour
 
         /*// Brake with high drag
         rb.angularDrag = stoppingAngularDrag;*/
+
+        switch (state)
+        {
+            case State.MARBLE:
+                rb.useGravity = true;
+                break;
+
+            case State.BUBBLE:
+                rb.useGravity = false;
+                rb.AddForce(-Physics.gravity);
+                break;
+        }
+            
     }
 
     public void SetMoveInput(InputAction.CallbackContext ctx)
