@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class FollowTarget : MonoBehaviour
 {
+    private static FollowTarget instance;
     public float followDistance;
+
+    private void Awake()
+    {
+        if (instance && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Update()
     {
