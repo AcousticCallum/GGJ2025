@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     // Private
     private Vector2 moveInput;
+    private State previousState;
 
     private void Awake()
     {
@@ -35,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(moveInput.sqrMagnitude > 0.0f)
+        if (moveInput.sqrMagnitude > 0.0f)
         {
             // Convert input direction to world space relative to camera and flatten to Y plane
             Vector3 targetDirection = Camera.main.transform.TransformDirection(moveInput);
@@ -58,18 +59,30 @@ public class Player : MonoBehaviour
         /*// Brake with high drag
         rb.angularDrag = stoppingAngularDrag;*/
 
-        switch (state)
+
+        // FOR SWTICHING STATE IN THE INSPECTOR
+        if (previousState != state)
         {
-            case State.MARBLE:
-                rb.useGravity = true;
+            ChangeState(state, true);
+            previousState = state;
+        }
+
+    }
+
+    public void ChangeState(State newState, bool debug = false)
+    {
+        if (!debug) state = newState;
+
+        switch (newState)
+        {
+            case State.BUBBLE:
+                rb.includeLayers = 1 << LayerMask.NameToLayer("Mesh");
                 break;
 
-            case State.BUBBLE:
-                rb.useGravity = false;
-                rb.AddForce(-Physics.gravity);
+            case State.MARBLE:
+                rb.includeLayers = 0;
                 break;
         }
-            
     }
 
     public void SetMoveInput(InputAction.CallbackContext ctx)
