@@ -8,7 +8,7 @@ public class Ring : MonoBehaviour
     {
         if (other.gameObject == Player.instance.gameObject)
         {
-            Player.instance.state = Player.State.BUBBLE;
+            Player.instance.ChangeState(Player.State.BUBBLE);
         }
     }
 }
