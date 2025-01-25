@@ -84,3 +84,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d771c856c7ff24799c5c5ffcbd31bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colour: {r: 0.19607843, g: 0.5882353, b: 0.88235295, a: 1}
+  fogEndDistance: 100
