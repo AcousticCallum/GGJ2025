@@ -7,7 +7,7 @@ public class Underwater : MonoBehaviour
     [SerializeField] Color colour;
     [SerializeField] float fogEndDistance;
 
-    private void Awake()
+    private void Start()
     {
         RenderSettings.fogColor = colour;
         RenderSettings.fogMode = FogMode.Linear;
