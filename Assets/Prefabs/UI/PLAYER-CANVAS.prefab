@@ -192,6 +192,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPaused: 0
   pauseScreen: {fileID: 3665411772765388470}
+  winScreen: {fileID: 1227062568906092636}
+  loseScreen: {fileID: 7998795631263446270}
+  hasGameEnded: 0
   uiFade: {fileID: 0}
 --- !u!1 &471701210495481596
 GameObject:
