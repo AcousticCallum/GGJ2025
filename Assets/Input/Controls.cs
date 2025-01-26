@@ -35,6 +35,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""Value"",
+                    ""id"": ""d2f4bc2d-87e4-4b0e-a2a8-6e8e63342d00"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""6105ab6c-c4a5-459a-ada0-3a2ed7344b26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -158,6 +176,50 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d4b9c1d-19dc-414f-812b-0cc2a6dcea09"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f2959cd-b8df-4952-8dce-6e788c3e4855"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b1f14ec-3a3b-4e79-86f8-60a2a954c087"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7565bd0-b32e-4e06-baa6-54c0274dbefa"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -195,6 +257,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Marble
         m_Marble = asset.FindActionMap("Marble", throwIfNotFound: true);
         m_Marble_Move = m_Marble.FindAction("Move", throwIfNotFound: true);
+        m_Marble_Mouse = m_Marble.FindAction("Mouse", throwIfNotFound: true);
+        m_Marble_Jump = m_Marble.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -257,11 +321,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Marble;
     private List<IMarbleActions> m_MarbleActionsCallbackInterfaces = new List<IMarbleActions>();
     private readonly InputAction m_Marble_Move;
+    private readonly InputAction m_Marble_Mouse;
+    private readonly InputAction m_Marble_Jump;
     public struct MarbleActions
     {
         private @Controls m_Wrapper;
         public MarbleActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Marble_Move;
+        public InputAction @Mouse => m_Wrapper.m_Marble_Mouse;
+        public InputAction @Jump => m_Wrapper.m_Marble_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Marble; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -274,6 +342,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IMarbleActions instance)
@@ -281,6 +355,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IMarbleActions instance)
@@ -319,5 +399,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IMarbleActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

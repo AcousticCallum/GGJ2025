@@ -19,9 +19,13 @@ public class Player : MonoBehaviour
 
     // Serialized Private
     [SerializeField] private State state;
+
+    [SerializeField] private LayerMask groundMask;
     
     [SerializeField] private float torque;
+    [SerializeField] private float marbleAirForce;
     [SerializeField] private float force;
+    [SerializeField] private float jumpHeight;
 
     [SerializeField] private float angularDrag, stoppingAngularDrag;
 
@@ -30,6 +34,8 @@ public class Player : MonoBehaviour
     // Private
     private Vector2 moveInput;
     private Vector3 respawnPoint;
+
+    private bool jump;
 
     private void Awake()
     {
@@ -50,6 +56,22 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        bool grounded = false;
+
+        if (Physics.CheckSphere(transform.position, 0.55f, groundMask))
+        {
+            grounded = true;
+
+            if (jump)
+            {
+                Vector3 v = rb.velocity;
+                v.y = Mathf.Sqrt(2.0f * -Physics.gravity.y * jumpHeight);
+                rb.velocity = v;
+
+                jump = false;
+            }
+        }
+
         if (moveInput.sqrMagnitude > 0.0f)
         {
             // Convert input direction to world space relative to camera and flatten to Y plane
@@ -59,12 +81,20 @@ public class Player : MonoBehaviour
 
             if (state == State.MARBLE)
             {
-                // Rotate around axis that moves in target direction
-                rb.AddTorque(torque * moveInput.magnitude * Vector3.Cross(Vector3.up, targetDirection));
+                if (grounded)
+                {
+                    // Rotate around axis that moves in target direction
+                    rb.AddTorque(torque * moveInput.magnitude * Vector3.Cross(Vector3.up, targetDirection));
+                }
+                else
+                {
+                    // Move in target direction
+                    rb.AddForce(marbleAirForce * moveInput.magnitude * targetDirection);
+                }
             }
             else
             {
-                // Rotate around axis that moves in target direction
+                // Move in target direction
                 rb.AddForce(force * moveInput.magnitude * targetDirection);
             }
         }
@@ -73,6 +103,8 @@ public class Player : MonoBehaviour
         {
             rb.AddForce(Vector3.Scale(bubbleDrag, -rb.velocity));
         }
+
+        jump = false;
     }
 
     private void LateUpdate()
@@ -121,6 +153,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetJump(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            jump = true;
+        }
+    }
+
     public void SetCheckpoint(Vector3 position)
     {
         respawnPoint = position;
@@ -134,6 +174,11 @@ public class Player : MonoBehaviour
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 0.75f);
     }
 
     public enum State
