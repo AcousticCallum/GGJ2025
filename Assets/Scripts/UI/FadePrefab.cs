@@ -16,7 +16,7 @@ public class FadePrefab : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(fadeGroup.alpha);
+        //Debug.Log(fadeGroup.alpha);
     }
 
     public IEnumerator FadeIn()
