@@ -20,11 +20,17 @@ public class Underwater : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        RenderSettings.fog = true;
+        if (other.gameObject == Player.instance.gameObject)
+        {
+            RenderSettings.fog = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        RenderSettings.fog = false;
+        if (other.gameObject == Player.instance.gameObject)
+        {
+            RenderSettings.fog = false;
+        }
     }
 }
