@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishes:
   - {fileID: 6303022238794343757, guid: a0b1ebc8935bb5a4a8eb80cf3977959d, type: 3}
-  fishCount: 1000
+  fishCount: 100
   offset: {x: 20, y: 5, z: 20}

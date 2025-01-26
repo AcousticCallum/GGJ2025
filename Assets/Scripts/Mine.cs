@@ -10,7 +10,7 @@ public class Mine : MonoBehaviour
     {
         if (other.gameObject == Player.instance.gameObject)
         {
-            Player.instance.rb.AddExplosionForce(explosionForce, transform.position, 1);
+            Player.instance.rb.AddForce(transform.position * explosionForce, ForceMode.Impulse);
 
             Destroy(gameObject);
         }
