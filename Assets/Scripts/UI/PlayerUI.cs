@@ -9,6 +9,9 @@ public class PlayerUI : MonoBehaviour
 {
     public bool isPaused;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject loseScreen;
+    public bool hasGameEnded;
 
     public FadePrefab uiFade;
 
@@ -16,7 +19,8 @@ public class PlayerUI : MonoBehaviour
     void Start()
     {
         uiFade = FindAnyObjectByType<FadePrefab>();
-        bool isPaused = false;
+        isPaused = false;
+        hasGameEnded = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -24,11 +28,11 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (isPaused)
+            if (isPaused && !hasGameEnded)
             {
                 UnPause();
             }
-            else
+            else if (!hasGameEnded)
             {
                 Pause();
             }
@@ -51,6 +55,23 @@ public class PlayerUI : MonoBehaviour
         isPaused = false;
     }
 
+    public void EndState(int state)
+    {
+        hasGameEnded = true;
+
+        switch (state)
+        {
+            case 0:
+                winScreen.SetActive(true);
+                break;
+            case 1:
+                loseScreen.SetActive(true);
+                break;
+        }
+
+        Time.timeScale = 0.0f;
+    }
+
     public void UITransition(int type)
     {
         StartCoroutine(UITransitionWithFade(type));
@@ -59,6 +80,8 @@ public class PlayerUI : MonoBehaviour
     public IEnumerator UITransitionWithFade(int type)
     {
         UnPause();
+        winScreen.SetActive(false);
+        loseScreen.SetActive(false);
         StartCoroutine(uiFade.FadeOut());
         yield return new WaitForSeconds(2.0f);
 
