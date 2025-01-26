@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         uiFade = FindAnyObjectByType<FadePrefab>();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
