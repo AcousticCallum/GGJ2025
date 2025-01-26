@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour
     public IEnumerator Play()
     {
         yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("LevelTest");
     }
 
     public IEnumerator Quit()
