@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] GameObject winScreen;
     [SerializeField] GameObject loseScreen;
     public bool hasGameEnded;
+    public bool isInTransition;
 
     public FadePrefab uiFade;
 
@@ -21,6 +23,7 @@ public class PlayerUI : MonoBehaviour
         uiFade = FindAnyObjectByType<FadePrefab>();
         isPaused = false;
         hasGameEnded = false;
+        isInTransition = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -28,11 +31,11 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (isPaused && !hasGameEnded)
+            if (isPaused && !hasGameEnded && !isInTransition)
             {
                 UnPause();
             }
-            else if (!hasGameEnded)
+            else if (!hasGameEnded && !isInTransition)
             {
                 Pause();
             }
@@ -57,7 +60,9 @@ public class PlayerUI : MonoBehaviour
 
     public void EndState(int state)
     {
+        isInTransition = true;
         hasGameEnded = true;
+        Cursor.lockState = CursorLockMode.None;
 
         switch (state)
         {
@@ -79,6 +84,7 @@ public class PlayerUI : MonoBehaviour
 
     public IEnumerator UITransitionWithFade(int type)
     {
+        isInTransition = true;
         UnPause();
         winScreen.SetActive(false);
         loseScreen.SetActive(false);
