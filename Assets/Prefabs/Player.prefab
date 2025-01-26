@@ -230,6 +230,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d2f4bc2d-87e4-4b0e-a2a8-6e8e63342d00
     m_ActionName: 'Marble/Mouse[/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7623839034191202292}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6105ab6c-c4a5-459a-ada0-3a2ed7344b26
+    m_ActionName: 'Marble/Jump[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Marble
