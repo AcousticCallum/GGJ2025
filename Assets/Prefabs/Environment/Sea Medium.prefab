@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6525537557081388587}
   m_Layer: 0
-  m_Name: Sea
+  m_Name: Sea Medium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5994513883099738788}
   - component: {fileID: 4466577610539872546}
-  - component: {fileID: 2900432662078759965}
   - component: {fileID: 5206776151586795353}
+  - component: {fileID: 2900432662078759965}
   m_Layer: 8
   m_Name: Underwater
   m_TagString: Untagged
@@ -55,6 +55,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5206776151586795353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738484175376759589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d771c856c7ff24799c5c5ffcbd31bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colour: {r: 0.13725491, g: 0.27450982, b: 0.39215687, a: 1}
+  fogMode: 2
+  fogDensity: 0.075
+  fogEndDistance: 50
 --- !u!114 &2900432662078759965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,17 +88,3 @@ MonoBehaviour:
   blendDistance: 0.5
   weight: 1
   sharedProfile: {fileID: 11400000, guid: cb8f42f115855da45ac50a7202ba4538, type: 2}
---- !u!114 &5206776151586795353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738484175376759589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24d771c856c7ff24799c5c5ffcbd31bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colour: {r: 0.13725491, g: 0.27450982, b: 0.39215687, a: 1}
-  fogEndDistance: 50

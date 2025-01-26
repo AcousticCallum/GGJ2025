@@ -5,12 +5,16 @@ using UnityEngine;
 public class Underwater : MonoBehaviour
 {
     [SerializeField] Color colour;
+
+    [SerializeField] FogMode fogMode;
+    [SerializeField] float fogDensity;
     [SerializeField] float fogEndDistance;
 
     private void Start()
     {
         RenderSettings.fogColor = colour;
-        RenderSettings.fogMode = FogMode.Linear;
+        RenderSettings.fogMode = fogMode;
+        RenderSettings.fogDensity = fogDensity;
         RenderSettings.fogEndDistance = fogEndDistance;
     }
 
