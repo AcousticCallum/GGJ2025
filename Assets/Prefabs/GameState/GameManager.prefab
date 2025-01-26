@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8253778889380439956
+--- !u!1 &593503570735219973
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8057346898555473442}
-  - component: {fileID: 2367940189050536326}
+  - component: {fileID: 8571555331413351083}
+  - component: {fileID: 93877411574466883}
   m_Layer: 0
-  m_Name: FishSpawner
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8057346898555473442
+--- !u!4 &8571555331413351083
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8253778889380439956}
+  m_GameObject: {fileID: 593503570735219973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,20 +32,15 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2367940189050536326
+--- !u!114 &93877411574466883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8253778889380439956}
+  m_GameObject: {fileID: 593503570735219973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76beaafcfa9c8f48a3163e735c5d6e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 41f2c5e5f92c31b4c8cecb10011284d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishes:
-  - {fileID: 6303022238794343757, guid: a0b1ebc8935bb5a4a8eb80cf3977959d, type: 3}
-  - {fileID: 5431225765887795766, guid: 5e5b44cc081ab7b439b999ee7d0229e7, type: 3}
-  fishCount: 100
-  offset: {x: 20, y: 5, z: 20}
