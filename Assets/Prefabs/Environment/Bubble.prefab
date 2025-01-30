@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 265054502181587628}
   - component: {fileID: 1932538641698798955}
   m_Layer: 0
-  m_Name: Ring
+  m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

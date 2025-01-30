@@ -35,6 +35,11 @@ public class CameraTarget : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void Update()
     {
         transform.position = Player.instance.transform.position;
