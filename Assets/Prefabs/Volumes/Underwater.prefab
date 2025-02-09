@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 20, z: 100}
+  m_LocalScale: {x: 1500, y: 50, z: 1500}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colour: {r: 0.13725491, g: 0.27450982, b: 0.39215687, a: 1}
   fogMode: 2
-  fogDensity: 0.075
+  fogDensity: 0.025
   fogEndDistance: 50
 --- !u!114 &2900432662078759965
 MonoBehaviour:
